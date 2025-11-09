@@ -1,0 +1,32 @@
+services:
+  mosquitto:
+    image: eclipse-mosquitto:2-openssl
+    container_name: meshtastic-mosquitto
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    volumes:
+      - ./mosquitto/config:/mosquitto/config
+      - ./mosquitto/data:/mosquitto/data
+      - ./mosquitto/log:/mosquitto/log
+    restart: unless-stopped
+    networks:
+      - meshtastic-net
+
+  converter:
+    build: .
+    container_name: meshtastic-converter
+    environment:
+      - BROKER=mosquitto
+      - PORT=1883
+      - REGION=EU_868
+      - ROOT_TOPIC=msh
+    depends_on:
+      - mosquitto
+    restart: unless-stopped
+    networks:
+      - meshtastic-net
+
+networks:
+  meshtastic-net:
+    driver: bridge
