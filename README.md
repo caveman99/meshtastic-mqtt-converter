@@ -394,5 +394,5 @@ You should have received a copy of the GNU General Public License along with thi
 ## Support
 
 - Documentation: See [EXAMPLES.md](EXAMPLES.md)
-- Issues: [GitHub Issues](https://github.com/yourusername/meshtastic-mqtt-converter/issues)
+- Issues: [GitHub Issues](https://github.com/caveman99/meshtastic-mqtt-converter/issues)
 - Meshtastic: [Discord](https://discord.gg/meshtastic)
